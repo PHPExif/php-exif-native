@@ -24,7 +24,7 @@
         "squizlabs/php_codesniffer": "2.*"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "PHPExif\\Adapter\\Native\\": "src/"
         }
     },
