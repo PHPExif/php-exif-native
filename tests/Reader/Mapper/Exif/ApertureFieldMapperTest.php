@@ -4,6 +4,7 @@ namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Exif;
 
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper\Exif\ApertureFieldMapper;
+use PHPExif\Common\Data\Exif;
 use PHPExif\Common\Data\ValueObject\Exif\Aperture;
 
 /**
@@ -41,4 +42,33 @@ class ApertureFieldMapperTest extends BaseFieldMapperTest
             'ApertureFNumber' => 'f/5.6',
         ],
     ];
+
+    /**
+     * @covers ::mapField
+     * @group mapper
+     *
+     * @return void
+     */
+    public function testMapFieldHasDataInOutput()
+    {
+        $field = reset($this->supportedFields);
+        $output = new Exif;
+        $mapper = new $this->fieldMapperClass();
+
+        $originalData = $output->getAperture();
+        $mapper->mapField($field, $this->validInput, $output);
+        $newData = $output->getAperture();
+
+        $this->assertNotSame($originalData, $newData);
+
+        $this->assertInstanceOf(
+            Aperture::class,
+            $newData
+        );
+
+        $this->assertEquals(
+            $this->validInput['COMPUTED']['ApertureFNumber'],
+            (string) $newData
+        );
+    }
 }
