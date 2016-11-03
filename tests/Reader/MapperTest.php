@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\PHPExif\Adapter\Native\Reader\Mapper;
+namespace Tests\PHPExif\Adapter\Native\Reader;
 
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper;
@@ -26,7 +26,7 @@ class MapperTest extends \PHPUnit_Framework_TestCase
      */
     public function testMapForwardsCall()
     {
-        $input = array();
+        $input = [];
         $output = new Metadata(new Exif, new Iptc);
 
         $mock = m::mock(Mapper::class . '[mapArray]')->makePartial();
@@ -49,7 +49,7 @@ class MapperTest extends \PHPUnit_Framework_TestCase
      */
     public function testMapArrayForwardsCall()
     {
-        $input = array();
+        $input = [];
         $output = new Metadata(
             new Exif,
             new Iptc
@@ -57,7 +57,7 @@ class MapperTest extends \PHPUnit_Framework_TestCase
 
         $mapper = new Mapper;
 
-        foreach (array('exif', 'iptc') as $field) {
+        foreach (array(Exif::class, Iptc::class) as $field) {
             $fieldMapper = m::mock(FieldMapper::class . '[getSupportedFields,mapField]');
             $fieldMapper->shouldReceive('getSupportedFields')
                 ->once()
