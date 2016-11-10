@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPExif/php-exif-common.git",
-                "reference": "a16a6e09d03668e3329cef890e3c5cbeef666e8e"
+                "reference": "e263f36c3634d804be0d08c6c8ed4ead6373cebb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPExif/php-exif-common/zipball/a16a6e09d03668e3329cef890e3c5cbeef666e8e",
-                "reference": "a16a6e09d03668e3329cef890e3c5cbeef666e8e",
+                "url": "https://api.github.com/repos/PHPExif/php-exif-common/zipball/e263f36c3634d804be0d08c6c8ed4ead6373cebb",
+                "reference": "e263f36c3634d804be0d08c6c8ed4ead6373cebb",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +57,7 @@
                 "jpeg",
                 "tiff"
             ],
-            "time": "2016-11-08 20:38:08"
+            "time": "2016-11-09 19:47:51"
         }
     ],
     "packages-dev": [

@@ -32,7 +32,7 @@ class Mapper implements MapperInterface, ArrayMapper
     /**
      * {@inheritDoc}
      */
-    public function map(array $input, MetadataInterface $output)
+    public function map(array $input, MetadataInterface &$output)
     {
         $this->mapArray($input, $output);
     }
