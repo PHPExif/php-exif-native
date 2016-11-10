@@ -35,6 +35,8 @@ class Mapper implements MapperInterface, ArrayMapper
     public function map(array $input, MetadataInterface &$output)
     {
         $this->mapArray($input, $output);
+
+        $output->setRawData($input);
     }
 
     /**

@@ -42,6 +42,39 @@ class MapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::map
+     * @group mapper
+     *
+     * @return void
+     */
+    public function testMapSetsRawData()
+    {
+        $input = [ 'raw' => 'data' ];
+        $output = new Metadata(new Exif, new Iptc);
+
+        $mock = m::mock(Mapper::class . '[mapArray]')->makePartial();
+        $mock->shouldReceive('mapArray')
+            ->once()
+            ->with(
+                $input,
+                m::type(Metadata::class)
+            )
+            ->andReturnNull();
+
+        $this->assertCount(
+            0,
+            $output->getRawData()
+        );
+
+        $mock->map($input, $output);
+
+        $this->assertEquals(
+            $input,
+            $output->getRawData()
+        );
+    }
+
+    /**
      * @covers ::mapArray
      * @group mapper
      *
