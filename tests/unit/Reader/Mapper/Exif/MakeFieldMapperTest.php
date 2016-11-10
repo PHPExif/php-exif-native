@@ -5,7 +5,7 @@ namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Exif;
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper\Exif\MakeFieldMapper;
 use PHPExif\Common\Data\Exif;
-use PHPExif\Common\Data\ValueObject\Exif\Make;
+use PHPExif\Common\Data\ValueObject\Make;
 
 /**
  * Class: MakeFieldMapperTest

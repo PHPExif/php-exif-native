@@ -12,7 +12,7 @@
 namespace PHPExif\Adapter\Native\Reader\Mapper\Exif;
 
 use PHPExif\Common\Data\ExifInterface;
-use PHPExif\Common\Data\ValueObject\Exif\Aperture;
+use PHPExif\Common\Data\ValueObject\Aperture;
 use PHPExif\Common\Mapper\FieldMapper;
 
 /**

@@ -5,7 +5,7 @@ namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Exif;
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper\Exif\ApertureFieldMapper;
 use PHPExif\Common\Data\Exif;
-use PHPExif\Common\Data\ValueObject\Exif\Aperture;
+use PHPExif\Common\Data\ValueObject\Aperture;
 
 /**
  * Class: ApertureFieldMapperTest
