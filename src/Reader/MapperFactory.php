@@ -12,6 +12,7 @@
 namespace PHPExif\Adapter\Native\Reader;
 
 use PHPExif\Adapter\Native\Reader\Mapper\ExifMapper;
+use PHPExif\Adapter\Native\Reader\Mapper\IptcMapper;
 
 /**
  * MapperFactory
@@ -32,10 +33,14 @@ class MapperFactory
     public static function getMapper()
     {
         $exifMapper = self::getExifMapper();
+        $iptcMapper = self::getIptcMapper();
 
         $mapper = new Mapper();
         $mapper->registerFieldMapper(
             $exifMapper
+        );
+        $mapper->registerFieldMapper(
+            $iptcMapper
         );
 
         return $mapper;
@@ -69,5 +74,35 @@ class MapperFactory
         }
 
         return $exifMapper;
+    }
+
+    /**
+     * Returns the mapper for Iptc data
+     *
+     * @return IptcMapper
+     */
+    private static function getIptcMapper()
+    {
+        $iptcMapper = new IptcMapper();
+
+        // find all classes
+        $reflClass = new \ReflectionClass(IptcMapper::class);
+        $namespace = $reflClass->getNamespaceName();
+        $namespace .= '\\Iptc';
+
+        $path = realpath(__DIR__ . '/Mapper/Iptc');
+
+        foreach (glob($path . '/*Mapper.php') as $classPath) {
+            $className = str_replace('.php', '', array_reverse(
+                explode(DIRECTORY_SEPARATOR, $classPath)
+            )[0]);
+            $fqcn = $namespace . '\\' . $className;
+
+            $fieldMapper = new $fqcn();
+
+            $iptcMapper->registerFieldMapper($fieldMapper);
+        }
+
+        return $iptcMapper;
     }
 }

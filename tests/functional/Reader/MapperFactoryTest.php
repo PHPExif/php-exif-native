@@ -6,6 +6,7 @@ use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper;
 use PHPExif\Adapter\Native\Reader\MapperFactory;
 use PHPExif\Adapter\Native\Reader\Mapper\ExifMapper;
+use PHPExif\Adapter\Native\Reader\Mapper\IptcMapper;
 use PHPExif\Common\Data\Exif;
 use PHPExif\Common\Data\Iptc;
 use PHPExif\Common\Data\Metadata;
@@ -45,6 +46,19 @@ class MapperFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertGreaterThan(
             0,
             count($exifFieldMappers)
+        );
+
+        $iptcMapper = $mapper->getFieldMapper(Iptc::class);
+
+        $this->assertInstanceOf(
+            IptcMapper::class,
+            $iptcMapper
+        );
+
+        $iptcFieldMappers = $iptcMapper->getFieldMappers();
+        $this->assertGreaterThan(
+            0,
+            count($iptcFieldMappers)
         );
     }
 }
