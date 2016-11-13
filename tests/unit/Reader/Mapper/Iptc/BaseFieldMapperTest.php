@@ -48,7 +48,7 @@ abstract class BaseFieldMapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $actual);
 
-        $this->assertEquals($this->supportedFields, $actual);
+        $this->assertEquals(array_keys($this->supportedFields), $actual);
     }
 
     /**
@@ -79,7 +79,8 @@ abstract class BaseFieldMapperTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(UnsupportedOutputException::class);
 
-        $field = reset($this->supportedFields);
+        $field = array_keys($this->supportedFields);
+        $field = reset($field);
         $input = [];
         $output = new \stdClass;
         $mapper = new $this->fieldMapperClass();
@@ -95,7 +96,8 @@ abstract class BaseFieldMapperTest extends \PHPUnit_Framework_TestCase
      */
     public function testMapFieldYieldsNewOutputForValidInput()
     {
-        $field = reset($this->supportedFields);
+        $field = array_keys($this->supportedFields);
+        $field = reset($field);
         $output = new Iptc;
         $mapper = new $this->fieldMapperClass();
 
@@ -119,7 +121,8 @@ abstract class BaseFieldMapperTest extends \PHPUnit_Framework_TestCase
      */
     public function testMapFieldYieldsSameOutputForInvalidInput()
     {
-        $field = reset($this->supportedFields);
+        $field = array_keys($this->supportedFields);
+        $field = reset($field);
         $output = new Iptc;
         $mapper = new $this->fieldMapperClass();
 
