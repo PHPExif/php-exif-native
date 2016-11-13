@@ -143,7 +143,7 @@ final class Reader implements ReaderInterface
         $iptcRawData = iptcparse($info['APP13']);
 
         // UTF8
-        if (isset($iptc["1#090"]) && $iptc["1#090"][0] == "\x1B%G") {
+        if (isset($iptcRawData["1#090"]) && $iptcRawData["1#090"][0] == "\x1B%G") {
             $iptcRawData = array_map('utf8_encode', $iptcRawData);
         }
 
