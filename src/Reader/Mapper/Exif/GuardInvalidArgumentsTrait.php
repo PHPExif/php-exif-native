@@ -46,4 +46,9 @@ trait GuardInvalidArgumentsTrait
             throw UnsupportedOutputException::forOutput($output);
         }
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    abstract public function getSupportedFields();
 }
