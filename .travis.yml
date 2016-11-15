@@ -8,7 +8,6 @@ matrix:
 
 script:
   - mkdir -p build/logs
-  - php vendor/bin/phpunit -c phpunit.xml.dist
   - ./vendor/bin/phpunit
   - ./vendor/bin/phpcs --standard=PSR2 ./src/
 
