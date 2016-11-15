@@ -16,6 +16,7 @@ use PHPExif\Common\Data\ValueObject\Caption;
 use PHPExif\Common\Data\ValueObject\Copyright;
 use PHPExif\Common\Data\ValueObject\Credit;
 use PHPExif\Common\Data\ValueObject\Headline;
+use PHPExif\Common\Data\ValueObject\Jobtitle;
 use PHPExif\Common\Data\ValueObject\Title;
 use PHPExif\Common\Mapper\FieldMapper;
 
@@ -47,6 +48,10 @@ class BasicStringFieldMapper implements FieldMapper
             'inputField' => '2#105',
             'method' => 'withHeadline',
         ],
+        Jobtitle::class => [
+            'inputField' => '2#085',
+            'method' => 'withJobtitle',
+        ],
         Title::class => [
             'inputField' => '2#005',
             'method' => 'withTitle',
@@ -65,6 +70,7 @@ class BasicStringFieldMapper implements FieldMapper
             Copyright::class,
             Credit::class,
             Headline::class,
+            Jobtitle::class,
             Title::class,
         );
     }
