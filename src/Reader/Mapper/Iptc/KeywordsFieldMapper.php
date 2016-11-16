@@ -11,7 +11,7 @@
 
 namespace PHPExif\Adapter\Native\Reader\Mapper\Iptc;
 
-use PHPExif\Common\Collection\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPExif\Common\Data\IptcInterface;
 use PHPExif\Common\Data\ValueObject\Keyword;
 use PHPExif\Common\Mapper\FieldMapper;
