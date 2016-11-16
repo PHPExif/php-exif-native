@@ -10,6 +10,7 @@ use PHPExif\Common\Data\ValueObject\Copyright;
 use PHPExif\Common\Data\ValueObject\Credit;
 use PHPExif\Common\Data\ValueObject\Headline;
 use PHPExif\Common\Data\ValueObject\Jobtitle;
+use PHPExif\Common\Data\ValueObject\Source;
 use PHPExif\Common\Data\ValueObject\Title;
 
 /**
@@ -54,6 +55,10 @@ class BasicStringFieldMapperTest extends BaseFieldMapperTest
             'getter' => 'getJobtitle',
             'input' => '2#085',
         ],
+        Source::class => [
+            'getter' => 'getSource',
+            'input' => '2#115',
+        ],
         Title::class => [
             'getter' => 'getTitle',
             'input' => '2#005',
@@ -72,6 +77,7 @@ class BasicStringFieldMapperTest extends BaseFieldMapperTest
         '2#105' => 'Some Headline data',
         '2#005' => 'Some Title data',
         '2#085' => 'Some Jobtitle data',
+        '2#115' => 'Some Source data',
     ];
 
     /**
