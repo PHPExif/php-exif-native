@@ -2,10 +2,10 @@
 
 namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Iptc;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper\Iptc\KeywordsFieldMapper;
-use PHPExif\Common\Collection\ArrayCollection;
-use PHPExif\Common\Collection\Collection;
 use PHPExif\Common\Data\Iptc;
 use PHPExif\Common\Data\ValueObject\Keyword;
 

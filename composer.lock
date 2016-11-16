@@ -8,20 +8,87 @@
     "content-hash": "aea18359229f808e436e3390c74ab135",
     "packages": [
         {
+            "name": "doctrine/collections",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/collections.git",
+                "reference": "6c1e4eef75f310ea1b3e30945e9f06e652128b8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/6c1e4eef75f310ea1b3e30945e9f06e652128b8a",
+                "reference": "6c1e4eef75f310ea1b3e30945e9f06e652128b8a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Collections\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Collections Abstraction library",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "array",
+                "collections",
+                "iterator"
+            ],
+            "time": "2015-04-14 22:21:58"
+        },
+        {
             "name": "miljar/php-exif-common",
             "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPExif/php-exif-common.git",
-                "reference": "d36e55bbea01948fb5fe484e4abcc103cf99a5c6"
+                "reference": "8f445c6b2184092138387c7a9dcd9327525bdbf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPExif/php-exif-common/zipball/d36e55bbea01948fb5fe484e4abcc103cf99a5c6",
-                "reference": "d36e55bbea01948fb5fe484e4abcc103cf99a5c6",
+                "url": "https://api.github.com/repos/PHPExif/php-exif-common/zipball/8f445c6b2184092138387c7a9dcd9327525bdbf0",
+                "reference": "8f445c6b2184092138387c7a9dcd9327525bdbf0",
                 "shasum": ""
             },
             "require": {
+                "doctrine/collections": "^1.3",
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
@@ -57,7 +124,7 @@
                 "jpeg",
                 "tiff"
             ],
-            "time": "2016-11-16 19:25:46"
+            "time": "2016-11-16 20:08:02"
         }
     ],
     "packages-dev": [
