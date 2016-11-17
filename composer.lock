@@ -79,12 +79,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPExif/php-exif-common.git",
-                "reference": "8f445c6b2184092138387c7a9dcd9327525bdbf0"
+                "reference": "2ad4a98e7e1aa9b4ef9558443cc7a1350c4784d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPExif/php-exif-common/zipball/8f445c6b2184092138387c7a9dcd9327525bdbf0",
-                "reference": "8f445c6b2184092138387c7a9dcd9327525bdbf0",
+                "url": "https://api.github.com/repos/PHPExif/php-exif-common/zipball/2ad4a98e7e1aa9b4ef9558443cc7a1350c4784d0",
+                "reference": "2ad4a98e7e1aa9b4ef9558443cc7a1350c4784d0",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "jpeg",
                 "tiff"
             ],
-            "time": "2016-11-16 20:08:02"
+            "time": "2016-11-17 19:35:50"
         }
     ],
     "packages-dev": [
@@ -325,16 +325,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "0.9.5",
+            "version": "0.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "4db079511a283e5aba1b3c2fb19037c645e70fc2"
+                "reference": "65d4ca18e15cb02eeb1e5336f884e46b9b905be0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/4db079511a283e5aba1b3c2fb19037c645e70fc2",
-                "reference": "4db079511a283e5aba1b3c2fb19037c645e70fc2",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/65d4ca18e15cb02eeb1e5336f884e46b9b905be0",
+                "reference": "65d4ca18e15cb02eeb1e5336f884e46b9b905be0",
                 "shasum": ""
             },
             "require": {
@@ -386,7 +386,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2016-05-22 21:52:33"
+            "time": "2016-09-30 12:09:40"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1280,16 +1280,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "937efb279bd37a375bcadf584dec0726f84dbf22"
+                "reference": "ce2bda23a56456f19e35d98241446b581f648c14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/937efb279bd37a375bcadf584dec0726f84dbf22",
-                "reference": "937efb279bd37a375bcadf584dec0726f84dbf22",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/ce2bda23a56456f19e35d98241446b581f648c14",
+                "reference": "ce2bda23a56456f19e35d98241446b581f648c14",
                 "shasum": ""
             },
             "require": {
@@ -1340,7 +1340,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2015-07-26 15:48:44"
+            "time": "2016-11-17 14:39:37"
         },
         {
             "name": "sebastian/diff",
