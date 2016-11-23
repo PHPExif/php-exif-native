@@ -69,4 +69,58 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
             $newData
         );
     }
+
+    /**
+     * @covers ::mapField
+     * @group mapper
+     *
+     * @return void
+     */
+    public function testMapFieldAbortsWhenNotCorrectDataInInput()
+    {
+        $field = reset($this->supportedFields);
+        $output = new Exif;
+        $mapper = new $this->fieldMapperClass();
+
+        $mapper->mapField($field, ['COMPUTED' => ['foo' => 'bar',]], $output);
+        $dimensions = $output->getDimensions();
+
+        $this->assertNull($dimensions);
+    }
+
+    /**
+     * @covers ::mapField
+     * @group mapper
+     *
+     * @return void
+     */
+    public function testDimensionsHasCorrectData()
+    {
+        $field = reset($this->supportedFields);
+        $output = new Exif;
+        $mapper = new $this->fieldMapperClass();
+
+        $mapper->mapField($field, $this->validInput, $output);
+        $dimensions = $output->getDimensions();
+
+        $width = $dimensions->getWidth();
+        $this->assertInstanceOf(
+            Width::class,
+            $width
+        );
+        $this->assertEquals(
+            $width->getValue(),
+            2048
+        );
+
+        $height = $dimensions->getHeight();
+        $this->assertInstanceOf(
+            Height::class,
+            $height
+        );
+        $this->assertEquals(
+            $height->getValue(),
+            1024
+        );
+    }
 }
