@@ -66,4 +66,40 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
             $newData
         );
     }
+
+    /**
+     * @covers ::mapField
+     * @group mapper
+     *
+     * @return void
+     */
+    public function testResolutionHasCorrectData()
+    {
+        $field = reset($this->supportedFields);
+        $output = new Exif;
+        $mapper = new $this->fieldMapperClass();
+
+        $mapper->mapField($field, $this->validInput, $output);
+        $resolution = $output->getResolution();
+
+        $horizontal = $resolution->getHorizontalResolution();
+        $this->assertInstanceOf(
+            LineResolution::class,
+            $horizontal
+        );
+        $this->assertEquals(
+            $horizontal->getValue(),
+            300
+        );
+
+        $vertical = $resolution->getVerticalResolution();
+        $this->assertInstanceOf(
+            LineResolution::class,
+            $vertical
+        );
+        $this->assertEquals(
+            $vertical->getValue(),
+            300
+        );
+    }
 }
