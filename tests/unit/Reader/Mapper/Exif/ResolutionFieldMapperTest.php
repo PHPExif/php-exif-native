@@ -5,8 +5,8 @@ namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Exif;
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper\Exif\ResolutionFieldMapper;
 use PHPExif\Common\Data\Exif;
-use PHPExif\Common\Data\ValueObject\HorizontalResolution;
-use PHPExif\Common\Data\ValueObject\VerticalResolution;
+use PHPExif\Common\Data\ValueObject\LineResolution;
+use PHPExif\Common\Data\ValueObject\Resolution;
 
 /**
  * Class: ResolutionFieldMapperTest
@@ -30,8 +30,7 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $supportedFields = [
-        HorizontalResolution::class,
-        VerticalResolution::class,
+        Resolution::class,
     ];
 
     /**
@@ -50,97 +49,21 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      *
      * @return void
      */
-    public function testMapFieldHasHorizontalResolutionDataInOutput()
+    public function testMapFieldHasResolutionDataInOutput()
     {
         $field = reset($this->supportedFields);
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
-        $originalData = $output->getHorizontalResolution();
+        $originalData = $output->getResolution();
         $mapper->mapField($field, $this->validInput, $output);
-        $newData = $output->getHorizontalResolution();
+        $newData = $output->getResolution();
 
         $this->assertNotSame($originalData, $newData);
 
         $this->assertInstanceOf(
-            HorizontalResolution::class,
+            Resolution::class,
             $newData
-        );
-
-        $this->assertEquals(
-            300,
-            $newData->getValue()
-        );
-    }
-
-    /**
-     * @covers ::mapField
-     * @group mapper
-     *
-     * @return void
-     */
-    public function testMapFieldHasVerticalResolutionDataInOutput()
-    {
-        $field = end($this->supportedFields);
-        $output = new Exif;
-        $mapper = new $this->fieldMapperClass();
-
-        $originalData = $output->getVerticalResolution();
-        $mapper->mapField($field, $this->validInput, $output);
-        $newData = $output->getVerticalResolution();
-
-        $this->assertNotSame($originalData, $newData);
-
-        $this->assertInstanceOf(
-            VerticalResolution::class,
-            $newData
-        );
-
-        $this->assertEquals(
-            300,
-            $newData->getValue()
-        );
-    }
-
-    /**
-     * @covers ::mapField
-     * @group mapper
-     *
-     * @return void
-     */
-    public function testMapFieldHasAllDataInOutput()
-    {
-        $output = new Exif;
-        $mapper = new $this->fieldMapperClass();
-
-        $originalVerticalResolution = $output->getVerticalResolution();
-        $originalHorizontalResolution = $output->getHorizontalResolution();
-
-        foreach ($this->supportedFields as $field) {
-            $mapper->mapField($field, $this->validInput, $output);
-        }
-        $newVerticalResolution = $output->getVerticalResolution();
-        $newHorizontalResolution = $output->getHorizontalResolution();
-
-        $this->assertNotSame($originalVerticalResolution, $newVerticalResolution);
-        $this->assertNotSame($originalHorizontalResolution, $newHorizontalResolution);
-
-        $this->assertInstanceOf(
-            VerticalResolution::class,
-            $newVerticalResolution
-        );
-        $this->assertInstanceOf(
-            HorizontalResolution::class,
-            $newHorizontalResolution
-        );
-
-        $this->assertEquals(
-            300,
-            $newVerticalResolution->getValue()
-        );
-        $this->assertEquals(
-            300,
-            $newHorizontalResolution->getValue()
         );
     }
 }
