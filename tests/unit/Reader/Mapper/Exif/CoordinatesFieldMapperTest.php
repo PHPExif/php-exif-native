@@ -3,26 +3,26 @@
 namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Exif;
 
 use Mockery as m;
-use PHPExif\Adapter\Native\Reader\Mapper\Exif\ResolutionFieldMapper;
+use PHPExif\Adapter\Native\Reader\Mapper\Exif\CoordinatesFieldMapper;
 use PHPExif\Common\Data\Exif;
-use PHPExif\Common\Data\ValueObject\LineResolution;
-use PHPExif\Common\Data\ValueObject\Resolution;
+use PHPExif\Common\Data\ValueObject\Coordinates;
+use PHPExif\Common\Data\ValueObject\DigitalDegrees;
 
 /**
- * Class: ResolutionFieldMapperTest
+ * Class: CoordinatesFieldMapperTest
  *
  * @see \PHPUnit_Framework_TestCase
- * @coversDefaultClass \PHPExif\Adapter\Native\Reader\Mapper\Exif\ResolutionFieldMapper
+ * @coversDefaultClass \PHPExif\Adapter\Native\Reader\Mapper\Exif\CoordinatesFieldMapper
  * @covers ::<!public>
  */
-class ResolutionFieldMapperTest extends BaseFieldMapperTest
+class CoordinatesFieldMapperTest extends BaseFieldMapperTest
 {
     /**
      * FQCN of the fieldmapper being tested
      *
      * @var mixed
      */
-    protected $fieldMapperClass = ResolutionFieldMapper::class;
+    protected $fieldMapperClass = CoordinatesFieldMapper::class;
 
     /**
      * List of supported fields
@@ -30,7 +30,7 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $supportedFields = [
-        Resolution::class,
+        Coordinates::class,
     ];
 
     /**
@@ -39,8 +39,10 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'XResolution' => '300/1',
-        'YResolution' => '300/1',
+        'GPSLatitude' => ['4000/100', '4400/100', '30822/1000'],
+        'GPSLongitude' => [73, 59, 21.508],
+        'GPSLatitudeRef' => 'N',
+        'GPSLongitudeRef' => 'W',
     ];
 
     /**
@@ -49,20 +51,20 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      *
      * @return void
      */
-    public function testMapFieldHasResolutionDataInOutput()
+    public function testMapFieldHasCoordinatesDataInOutput()
     {
         $field = reset($this->supportedFields);
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
-        $originalData = $output->getResolution();
+        $originalData = $output->getCoordinates();
         $mapper->mapField($field, $this->validInput, $output);
-        $newData = $output->getResolution();
+        $newData = $output->getCoordinates();
 
         $this->assertNotSame($originalData, $newData);
 
         $this->assertInstanceOf(
-            Resolution::class,
+            Coordinates::class,
             $newData
         );
     }
@@ -73,33 +75,33 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      *
      * @return void
      */
-    public function testResolutionHasCorrectData()
+    public function testCoordinatesHasCorrectData()
     {
         $field = reset($this->supportedFields);
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
         $mapper->mapField($field, $this->validInput, $output);
-        $resolution = $output->getResolution();
+        $coordinates = $output->getCoordinates();
 
-        $horizontal = $resolution->getHorizontalResolution();
+        $latitude = $coordinates->getLatitude();
         $this->assertInstanceOf(
-            LineResolution::class,
-            $horizontal
+            DigitalDegrees::class,
+            $latitude
         );
         $this->assertEquals(
-            $horizontal->getValue(),
-            300
+            40.741895,
+            $latitude->getValue()
         );
 
-        $vertical = $resolution->getVerticalResolution();
+        $longitude = $coordinates->getLongitude();
         $this->assertInstanceOf(
-            LineResolution::class,
-            $vertical
+            DigitalDegrees::class,
+            $longitude
         );
         $this->assertEquals(
-            $vertical->getValue(),
-            300
+            -73.989308,
+            $longitude->getValue()
         );
     }
 }

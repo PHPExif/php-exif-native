@@ -12,6 +12,7 @@
 namespace PHPExif\Adapter\Native\Reader\Mapper\Exif;
 
 use PHPExif\Common\Data\ExifInterface;
+use PHPExif\Common\Data\ValueObject\Dimensions;
 use PHPExif\Common\Data\ValueObject\Height;
 use PHPExif\Common\Data\ValueObject\Width;
 use PHPExif\Common\Mapper\FieldMapper;
@@ -32,8 +33,7 @@ class DimensionsFieldMapper implements FieldMapper
     public function getSupportedFields()
     {
         return array(
-            Height::class,
-            Width::class,
+            Dimensions::class,
         );
     }
 
@@ -44,22 +44,20 @@ class DimensionsFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        $inputField = 'Height';
-        if (Width::class === $field) {
-            $inputField = 'Width';
+        if (!array_key_exists('COMPUTED', $input)) {
+            return;
         }
+        $input = $input['COMPUTED'];
 
-        if (!array_key_exists('COMPUTED', $input)
-            || !array_key_exists($inputField, $input['COMPUTED'])) {
+        if (!(array_key_exists('Width', $input) && array_key_exists('Height', $input))) {
             return;
         }
 
-        $valueObject = new $field(
-            (int) $input['COMPUTED'][$inputField]
+        $dimensions = new Dimensions(
+            Width::pixels((int) $input['Width']),
+            Height::pixels((int) $input['Height'])
         );
 
-        $method = 'with' . $inputField;
-
-        $output = $output->$method($valueObject);
+        $output = $output->withDimensions($dimensions);
     }
 }

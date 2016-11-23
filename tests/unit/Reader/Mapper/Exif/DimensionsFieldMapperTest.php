@@ -5,6 +5,7 @@ namespace Tests\PHPExif\Adapter\Native\Reader\Mapper\Exif;
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader\Mapper\Exif\DimensionsFieldMapper;
 use PHPExif\Common\Data\Exif;
+use PHPExif\Common\Data\ValueObject\Dimensions;
 use PHPExif\Common\Data\ValueObject\Height;
 use PHPExif\Common\Data\ValueObject\Width;
 
@@ -30,8 +31,7 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $supportedFields = [
-        Height::class,
-        Width::class,
+        Dimensions::class,
     ];
 
     /**
@@ -52,26 +52,21 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
      *
      * @return void
      */
-    public function testMapFieldHasHeightDataInOutput()
+    public function testMapFieldHasDimensionsDataInOutput()
     {
         $field = reset($this->supportedFields);
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
-        $originalData = $output->getHeight();
+        $originalData = $output->getDimensions();
         $mapper->mapField($field, $this->validInput, $output);
-        $newData = $output->getHeight();
+        $newData = $output->getDimensions();
 
         $this->assertNotSame($originalData, $newData);
 
         $this->assertInstanceOf(
-            Height::class,
+            Dimensions::class,
             $newData
-        );
-
-        $this->assertEquals(
-            $this->validInput['COMPUTED']['Height'],
-            $newData->getValue()
         );
     }
 
@@ -81,27 +76,16 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
      *
      * @return void
      */
-    public function testMapFieldHasWidthDataInOutput()
+    public function testMapFieldAbortsWhenNotCorrectDataInInput()
     {
-        $field = end($this->supportedFields);
+        $field = reset($this->supportedFields);
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
-        $originalData = $output->getWidth();
-        $mapper->mapField($field, $this->validInput, $output);
-        $newData = $output->getWidth();
+        $mapper->mapField($field, ['COMPUTED' => ['foo' => 'bar',]], $output);
+        $dimensions = $output->getDimensions();
 
-        $this->assertNotSame($originalData, $newData);
-
-        $this->assertInstanceOf(
-            Width::class,
-            $newData
-        );
-
-        $this->assertEquals(
-            $this->validInput['COMPUTED']['Width'],
-            $newData->getValue()
-        );
+        $this->assertNull($dimensions);
     }
 
     /**
@@ -110,39 +94,33 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
      *
      * @return void
      */
-    public function testMapFieldHasAllDataInOutput()
+    public function testDimensionsHasCorrectData()
     {
+        $field = reset($this->supportedFields);
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
-        $originalWidth = $output->getWidth();
-        $originalHeight = $output->getHeight();
+        $mapper->mapField($field, $this->validInput, $output);
+        $dimensions = $output->getDimensions();
 
-        foreach ($this->supportedFields as $field) {
-            $mapper->mapField($field, $this->validInput, $output);
-        }
-        $newWidth = $output->getWidth();
-        $newHeight = $output->getHeight();
-
-        $this->assertNotSame($originalWidth, $newWidth);
-        $this->assertNotSame($originalHeight, $newHeight);
-
+        $width = $dimensions->getWidth();
         $this->assertInstanceOf(
             Width::class,
-            $newWidth
+            $width
         );
-        $this->assertInstanceOf(
-            Height::class,
-            $newHeight
+        $this->assertEquals(
+            $width->getValue(),
+            2048
         );
 
-        $this->assertEquals(
-            $this->validInput['COMPUTED']['Width'],
-            $newWidth->getValue()
+        $height = $dimensions->getHeight();
+        $this->assertInstanceOf(
+            Height::class,
+            $height
         );
         $this->assertEquals(
-            $this->validInput['COMPUTED']['Height'],
-            $newHeight->getValue()
+            $height->getValue(),
+            1024
         );
     }
 }

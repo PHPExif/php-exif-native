@@ -12,8 +12,8 @@
 namespace PHPExif\Adapter\Native\Reader\Mapper\Exif;
 
 use PHPExif\Common\Data\ExifInterface;
-use PHPExif\Common\Data\ValueObject\HorizontalResolution;
-use PHPExif\Common\Data\ValueObject\VerticalResolution;
+use PHPExif\Common\Data\ValueObject\LineResolution;
+use PHPExif\Common\Data\ValueObject\Resolution;
 use PHPExif\Common\Mapper\FieldMapper;
 
 /**
@@ -46,8 +46,7 @@ class ResolutionFieldMapper implements FieldMapper
     public function getSupportedFields()
     {
         return array(
-            HorizontalResolution::class,
-            VerticalResolution::class,
+            Resolution::class,
         );
     }
 
@@ -58,16 +57,15 @@ class ResolutionFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        $inputField = $this->map[$field]['dataField'];
-
-        if (!array_key_exists($inputField, $input)) {
+        if (!(array_key_exists('XResolution', $input) && array_key_exists('YResolution', $input))) {
             return;
         }
 
-        $valueObject = new $field(
-            $input[$inputField]
+        $resolution = new Resolution(
+            LineResolution::dpi($input['XResolution']), // horizontal
+            LineResolution::dpi($input['YResolution']) // vertical
         );
 
-        $output = $output->{$this->map[$field]['method']}($valueObject);
+        $output = $output->withResolution($resolution);
     }
 }
