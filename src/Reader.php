@@ -73,7 +73,7 @@ final class Reader implements ReaderInterface
             self::WITHIPTC => true,
         ];
 
-        $config = array_merge($defaults, $config);
+        $config = array_replace($defaults, $config);
 
         $this->sections = $config[self::SECTIONS];
         $this->asArrays = $config[self::ARRAYS];
