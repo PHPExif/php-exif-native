@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\PHPExif\Adapter\Native;
+namespace Tests\Functional\PHPExif\Adapter\Native;
 
 use Mockery as m;
 use PHPExif\Adapter\Native\Reader;
