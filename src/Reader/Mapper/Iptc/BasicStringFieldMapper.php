@@ -20,6 +20,7 @@ use PHPExif\Common\Data\ValueObject\Jobtitle;
 use PHPExif\Common\Data\ValueObject\Source;
 use PHPExif\Common\Data\ValueObject\Title;
 use PHPExif\Common\Mapper\FieldMapper;
+use PHPExif\Common\Mapper\GuardInvalidArgumentsForIptcTrait;
 
 /**
  * Mapper
@@ -63,7 +64,7 @@ class BasicStringFieldMapper implements FieldMapper
         ],
     ];
 
-    use GuardInvalidArgumentsTrait;
+    use GuardInvalidArgumentsForIptcTrait;
 
     /**
      * {@inheritDoc}

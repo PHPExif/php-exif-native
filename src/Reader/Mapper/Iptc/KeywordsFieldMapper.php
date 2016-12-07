@@ -15,6 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use PHPExif\Common\Data\IptcInterface;
 use PHPExif\Common\Data\ValueObject\Keyword;
 use PHPExif\Common\Mapper\FieldMapper;
+use PHPExif\Common\Mapper\GuardInvalidArgumentsForIptcTrait;
 
 /**
  * Mapper
@@ -24,7 +25,7 @@ use PHPExif\Common\Mapper\FieldMapper;
  */
 class KeywordsFieldMapper implements FieldMapper
 {
-    use GuardInvalidArgumentsTrait;
+    use GuardInvalidArgumentsForIptcTrait;
 
     /**
      * {@inheritDoc}

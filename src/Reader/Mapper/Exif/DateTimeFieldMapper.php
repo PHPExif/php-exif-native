@@ -14,6 +14,7 @@ namespace PHPExif\Adapter\Native\Reader\Mapper\Exif;
 use PHPExif\Common\Data\ExifInterface;
 use PHPExif\Common\Mapper\FieldMapper;
 use \DateTimeImmutable;
+use PHPExif\Common\Mapper\GuardInvalidArgumentsForExifTrait;
 
 /**
  * Mapper
@@ -23,7 +24,7 @@ use \DateTimeImmutable;
  */
 class DateTimeFieldMapper implements FieldMapper
 {
-    use GuardInvalidArgumentsTrait;
+    use GuardInvalidArgumentsForExifTrait;
 
     /**
      * {@inheritDoc}

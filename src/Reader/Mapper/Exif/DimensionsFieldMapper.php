@@ -16,6 +16,7 @@ use PHPExif\Common\Data\ValueObject\Dimensions;
 use PHPExif\Common\Data\ValueObject\Height;
 use PHPExif\Common\Data\ValueObject\Width;
 use PHPExif\Common\Mapper\FieldMapper;
+use PHPExif\Common\Mapper\GuardInvalidArgumentsForExifTrait;
 
 /**
  * Mapper
@@ -25,7 +26,7 @@ use PHPExif\Common\Mapper\FieldMapper;
  */
 class DimensionsFieldMapper implements FieldMapper
 {
-    use GuardInvalidArgumentsTrait;
+    use GuardInvalidArgumentsForExifTrait;
 
     /**
      * {@inheritDoc}
