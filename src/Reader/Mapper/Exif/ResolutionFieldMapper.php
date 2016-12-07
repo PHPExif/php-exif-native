@@ -15,6 +15,7 @@ use PHPExif\Common\Data\ExifInterface;
 use PHPExif\Common\Data\ValueObject\LineResolution;
 use PHPExif\Common\Data\ValueObject\Resolution;
 use PHPExif\Common\Mapper\FieldMapper;
+use PHPExif\Common\Mapper\GuardInvalidArgumentsForExifTrait;
 
 /**
  * Mapper
@@ -38,7 +39,7 @@ class ResolutionFieldMapper implements FieldMapper
         ],
     ];
 
-    use GuardInvalidArgumentsTrait;
+    use GuardInvalidArgumentsForExifTrait;
 
     /**
      * {@inheritDoc}

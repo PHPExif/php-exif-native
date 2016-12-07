@@ -15,6 +15,7 @@ use PHPExif\Common\Data\ExifInterface;
 use PHPExif\Common\Data\ValueObject\Coordinates;
 use PHPExif\Common\Data\ValueObject\DigitalDegrees;
 use PHPExif\Common\Mapper\FieldMapper;
+use PHPExif\Common\Mapper\GuardInvalidArgumentsForExifTrait;
 
 /**
  * Mapper
@@ -24,7 +25,7 @@ use PHPExif\Common\Mapper\FieldMapper;
  */
 class CoordinatesFieldMapper implements FieldMapper
 {
-    use GuardInvalidArgumentsTrait;
+    use GuardInvalidArgumentsForExifTrait;
 
     /**
      * {@inheritDoc}

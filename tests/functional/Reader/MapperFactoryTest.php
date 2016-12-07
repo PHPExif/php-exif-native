@@ -3,13 +3,13 @@
 namespace Tests\PHPExif\Adapter\Native\Reader;
 
 use Mockery as m;
-use PHPExif\Adapter\Native\Reader\Mapper;
 use PHPExif\Adapter\Native\Reader\MapperFactory;
-use PHPExif\Adapter\Native\Reader\Mapper\ExifMapper;
-use PHPExif\Adapter\Native\Reader\Mapper\IptcMapper;
 use PHPExif\Common\Data\Exif;
 use PHPExif\Common\Data\Iptc;
 use PHPExif\Common\Data\Metadata;
+use PHPExif\Common\ExifMapper;
+use PHPExif\Common\IptcMapper;
+use PHPExif\Common\MetadataMapper;
 
 /**
  * Class: MapperFactoryTest
@@ -31,7 +31,7 @@ class MapperFactoryTest extends \PHPUnit_Framework_TestCase
         $mapper = MapperFactory::getMapper();
 
         $this->assertInstanceOf(
-            Mapper::class,
+            MetadataMapper::class,
             $mapper
         );
 
