@@ -31,7 +31,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\PHPExif\\Adapter\\Native\\": "tests/unit/"
+            "Tests\\PHPExif\\Adapter\\Native\\": "tests/unit/",
+            "Tests\\Functional\\PHPExif\\Adapter\\Native\\": "tests/functional/"
         }
     }
 }
