@@ -41,22 +41,22 @@ final class Reader implements ReaderInterface
     /**
      * @var string
      */
-    private $sections = null;
+    private $sections;
 
     /**
      * @var boolean
      */
-    private $asArrays = false;
+    private $asArrays;
 
     /**
      * @var boolean
      */
-    private $thumbnailInfo = false;
+    private $thumbnailInfo;
 
     /**
      * @var boolean
      */
-    private $withIptc = true;
+    private $withIptc;
 
     /**
      * @param MapperInterface $mapper
@@ -76,9 +76,9 @@ final class Reader implements ReaderInterface
         $config = array_replace($defaults, $config);
 
         $this->sections = $config[self::SECTIONS];
-        $this->asArrays = $config[self::ARRAYS];
-        $this->thumbnailInfo = $config[self::THUMBNAILINFO];
-        $this->withIptc = $config[self::WITHIPTC];
+        $this->asArrays = (bool) $config[self::ARRAYS];
+        $this->thumbnailInfo = (bool) $config[self::THUMBNAILINFO];
+        $this->withIptc = (bool) $config[self::WITHIPTC];
 
         $this->mapper = $mapper;
     }
