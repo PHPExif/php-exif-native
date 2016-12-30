@@ -38,7 +38,7 @@ class FilenameFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'FileName' => 'IMG_01234.JPG',
+        'filename' => 'IMG_01234.JPG',
     ];
 
     /**
@@ -65,7 +65,7 @@ class FilenameFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['FileName'],
+            $this->validInput['filename'],
             (string) $newData
         );
     }

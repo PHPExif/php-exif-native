@@ -38,8 +38,8 @@ class ApertureFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'COMPUTED' => [
-            'ApertureFNumber' => 'f/5.6',
+        'computed' => [
+            'aperturefnumber' => 'f/5.6',
         ],
     ];
 
@@ -67,7 +67,7 @@ class ApertureFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['COMPUTED']['ApertureFNumber'],
+            $this->validInput['computed']['aperturefnumber'],
             (string) $newData
         );
     }

@@ -43,13 +43,13 @@ class FocusDistanceFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('COMPUTED', $input)
-            || !array_key_exists('FocusDistance', $input['COMPUTED'])) {
+        if (!array_key_exists('computed', $input)
+            || !array_key_exists('focusdistance', $input['computed'])) {
             return;
         }
 
         $focusDistance = new FocusDistance(
-            $input['COMPUTED']['FocusDistance']
+            $input['computed']['focusdistance']
         );
 
         $output = $output->withFocusDistance($focusDistance);

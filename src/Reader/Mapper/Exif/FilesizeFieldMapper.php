@@ -43,11 +43,11 @@ class FilesizeFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('FileSize', $input)) {
+        if (!array_key_exists('filesize', $input)) {
             return;
         }
 
-        $filesize = new Filesize($input['FileSize']);
+        $filesize = new Filesize($input['filesize']);
 
         $output = $output->withFilesize($filesize);
     }

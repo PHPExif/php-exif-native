@@ -38,7 +38,7 @@ class FilesizeFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'FileSize' => 5345678,
+        'filesize' => 5345678,
     ];
 
     /**
@@ -65,7 +65,7 @@ class FilesizeFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['FileSize'],
+            $this->validInput['filesize'],
             (string) $newData
         );
     }

@@ -38,7 +38,7 @@ class ModelFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'Model' => 'NIKON D90',
+        'model' => 'NIKON D90',
     ];
 
     /**
@@ -65,7 +65,7 @@ class ModelFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['Model'],
+            $this->validInput['model'],
             (string) $newData
         );
     }

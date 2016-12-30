@@ -38,7 +38,7 @@ class SoftwareFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'Software' => 'Adobe Lightroom 6.0',
+        'software' => 'Adobe Lightroom 6.0',
     ];
 
     /**
@@ -65,7 +65,7 @@ class SoftwareFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['Software'],
+            $this->validInput['software'],
             (string) $newData
         );
     }

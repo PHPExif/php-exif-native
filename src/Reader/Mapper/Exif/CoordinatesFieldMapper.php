@@ -44,14 +44,14 @@ class CoordinatesFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!(array_key_exists('GPSLatitude', $input) && array_key_exists('GPSLongitude', $input))) {
+        if (!(array_key_exists('gpslatitude', $input) && array_key_exists('gpslongitude', $input))) {
             return;
         }
 
-        $latitude = $this->extractGpsCoordinate($input['GPSLatitude']);
-        $longitude = $this->extractGpsCoordinate($input['GPSLongitude']);
-        $latitudeRef = empty($input['GPSLatitudeRef'][0]) ? 'N' : $input['GPSLatitudeRef'][0];
-        $longitudeRef = empty($input['GPSLongitudeRef'][0]) ? 'E' : $input['GPSLongitudeRef'][0];
+        $latitude = $this->extractGpsCoordinate($input['gpslatitude']);
+        $longitude = $this->extractGpsCoordinate($input['gpslongitude']);
+        $latitudeRef = empty($input['gpslatituderef'][0]) ? 'N' : $input['gpslatituderef'][0];
+        $longitudeRef = empty($input['gpslongituderef'][0]) ? 'E' : $input['gpslongituderef'][0];
 
         $coordinates = new Coordinates(
             new DigitalDegrees(

@@ -38,7 +38,7 @@ class MimeTypeFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'MimeType' => 'image/jpeg',
+        'mimetype' => 'image/jpeg',
     ];
 
     /**
@@ -65,7 +65,7 @@ class MimeTypeFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['MimeType'],
+            $this->validInput['mimetype'],
             (string) $newData
         );
     }

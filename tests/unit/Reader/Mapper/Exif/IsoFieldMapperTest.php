@@ -38,7 +38,7 @@ class IsoFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'ISOSpeedRatings' => 200,
+        'isospeedratings' => 200,
     ];
 
     /**
@@ -65,7 +65,7 @@ class IsoFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['ISOSpeedRatings'],
+            $this->validInput['isospeedratings'],
             $newData->getValue()
         );
     }

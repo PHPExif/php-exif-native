@@ -43,11 +43,11 @@ class IsoFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('ISOSpeedRatings', $input)) {
+        if (!array_key_exists('isospeedratings', $input)) {
             return;
         }
 
-        $iso = new IsoSpeed((int) $input['ISOSpeedRatings']);
+        $iso = new IsoSpeed((int) $input['isospeedratings']);
 
         $output = $output->withIsoSpeed($iso);
     }

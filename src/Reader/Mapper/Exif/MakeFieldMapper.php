@@ -43,11 +43,11 @@ class MakeFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('Make', $input)) {
+        if (!array_key_exists('make', $input)) {
             return;
         }
 
-        $make = new Make($input['Make']);
+        $make = new Make($input['make']);
 
         $output = $output->withMake($make);
     }

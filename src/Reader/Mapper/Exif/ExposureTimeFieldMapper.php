@@ -43,11 +43,11 @@ class ExposureTimeFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('ExposureTime', $input)) {
+        if (!array_key_exists('exposuretime', $input)) {
             return;
         }
 
-        $iso = new ExposureTime($input['ExposureTime']);
+        $iso = new ExposureTime($input['exposuretime']);
 
         $output = $output->withExposureTime($iso);
     }
