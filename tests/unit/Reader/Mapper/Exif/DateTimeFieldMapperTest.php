@@ -38,7 +38,7 @@ class DateTimeFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'DateTimeOriginal' => '2016-11-17 20:00:00',
+        'datetimeoriginal' => '2016-11-17 20:00:00',
     ];
 
     /**
@@ -65,7 +65,7 @@ class DateTimeFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['DateTimeOriginal'],
+            $this->validInput['datetimeoriginal'],
             $newData->format('Y-m-d H:i:s')
         );
     }

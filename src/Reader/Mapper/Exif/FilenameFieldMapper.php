@@ -43,11 +43,11 @@ class FilenameFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('FileName', $input)) {
+        if (!array_key_exists('filename', $input)) {
             return;
         }
 
-        $filename = new Filename($input['FileName']);
+        $filename = new Filename($input['filename']);
 
         $output = $output->withFilename($filename);
     }

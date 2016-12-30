@@ -39,10 +39,10 @@ class CoordinatesFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'GPSLatitude' => ['4000/100', '4400/100', '30822/1000'],
-        'GPSLongitude' => [73, 59, 21.508],
-        'GPSLatitudeRef' => 'N',
-        'GPSLongitudeRef' => 'W',
+        'gpslatitude' => ['4000/100', '4400/100', '30822/1000'],
+        'gpslongitude' => [73, 59, 21.508],
+        'gpslatituderef' => 'N',
+        'gpslongituderef' => 'W',
     ];
 
     /**

@@ -39,8 +39,8 @@ class ResolutionFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'XResolution' => '300/1',
-        'YResolution' => '300/1',
+        'xresolution' => '300/1',
+        'yresolution' => '300/1',
     ];
 
     /**

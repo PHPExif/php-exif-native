@@ -38,8 +38,8 @@ class FocusDistanceFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'COMPUTED' => [
-            'FocusDistance' => '7.98m',
+        'computed' => [
+            'focusdistance' => '7.98m',
         ],
     ];
 
@@ -67,7 +67,7 @@ class FocusDistanceFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['COMPUTED']['FocusDistance'],
+            $this->validInput['computed']['focusdistance'],
             (string) $newData
         );
     }

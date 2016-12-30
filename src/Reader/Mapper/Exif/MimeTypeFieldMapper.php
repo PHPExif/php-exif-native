@@ -43,11 +43,11 @@ class MimeTypeFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('MimeType', $input)) {
+        if (!array_key_exists('mimetype', $input)) {
             return;
         }
 
-        $mimeType = new MimeType($input['MimeType']);
+        $mimeType = new MimeType($input['mimetype']);
 
         $output = $output->withMimeType($mimeType);
     }

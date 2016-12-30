@@ -43,11 +43,11 @@ class ModelFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('Model', $input)) {
+        if (!array_key_exists('model', $input)) {
             return;
         }
 
-        $model = new Model($input['Model']);
+        $model = new Model($input['model']);
 
         $output = $output->withModel($model);
     }

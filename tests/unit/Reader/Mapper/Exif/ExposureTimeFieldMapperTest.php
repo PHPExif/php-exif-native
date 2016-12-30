@@ -38,7 +38,7 @@ class ExposureTimeFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'ExposureTime' => '10/300',
+        'exposuretime' => '10/300',
     ];
 
     /**

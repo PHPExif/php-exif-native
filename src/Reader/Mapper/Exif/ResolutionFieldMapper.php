@@ -30,11 +30,11 @@ class ResolutionFieldMapper implements FieldMapper
      */
     protected $map = [
         HorizontalResolution::class => [
-            'dataField' => 'XResolution',
+            'dataField' => 'xresolution',
             'method' => 'withHorizontalResolution',
         ],
         VerticalResolution::class => [
-            'dataField' => 'YResolution',
+            'dataField' => 'yresolution',
             'method' => 'withVerticalResolution',
         ],
     ];
@@ -58,13 +58,13 @@ class ResolutionFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!(array_key_exists('XResolution', $input) && array_key_exists('YResolution', $input))) {
+        if (!(array_key_exists('xresolution', $input) && array_key_exists('yresolution', $input))) {
             return;
         }
 
         $resolution = new Resolution(
-            LineResolution::dpi($input['XResolution']), // horizontal
-            LineResolution::dpi($input['YResolution']) // vertical
+            LineResolution::dpi($input['xresolution']), // horizontal
+            LineResolution::dpi($input['yresolution']) // vertical
         );
 
         $output = $output->withResolution($resolution);

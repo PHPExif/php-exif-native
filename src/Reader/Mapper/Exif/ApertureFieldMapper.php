@@ -43,13 +43,13 @@ class ApertureFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('COMPUTED', $input)
-            || !array_key_exists('ApertureFNumber', $input['COMPUTED'])) {
+        if (!array_key_exists('computed', $input)
+            || !array_key_exists('aperturefnumber', $input['computed'])) {
             return;
         }
 
         $aperture = Aperture::fromFocalLength(
-            $input['COMPUTED']['ApertureFNumber']
+            $input['computed']['aperturefnumber']
         );
 
         $output = $output->withAperture($aperture);

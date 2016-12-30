@@ -109,6 +109,8 @@ final class Reader implements ReaderInterface
 
         $this->augmentDataWithIptcRawData($filePath, $data);
 
+        $data = $this->normalizeArrayKeys($data);
+
         // map the data:
         $mapper = $this->getMapper();
         $metadata = new Metadata(
@@ -118,6 +120,32 @@ final class Reader implements ReaderInterface
         $mapper->map($data, $metadata);
 
         return $metadata;
+    }
+
+    /**
+     * Lowercases the keys for given array
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    private function normalizeArrayKeys(array $data)
+    {
+        $keys = array_keys($data);
+        $keys = array_map('strtolower', $keys);
+        $values = array_values($data);
+        $values = array_map(function ($value) {
+            if (!is_array($value)) {
+                return $value;
+            }
+
+            return $this->normalizeArrayKeys($value);
+        }, $values);
+
+        return array_combine(
+            $keys,
+            $values
+        );
     }
 
     /**

@@ -43,11 +43,11 @@ class DateTimeFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('DateTimeOriginal', $input)) {
+        if (!array_key_exists('datetimeoriginal', $input)) {
             return;
         }
 
-        $datetimeOriginal = new DateTimeImmutable($input['DateTimeOriginal']);
+        $datetimeOriginal = new DateTimeImmutable($input['datetimeoriginal']);
 
         $output = $output->withCreationDate($datetimeOriginal);
     }

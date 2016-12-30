@@ -45,18 +45,18 @@ class DimensionsFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('COMPUTED', $input)) {
+        if (!array_key_exists('computed', $input)) {
             return;
         }
-        $input = $input['COMPUTED'];
+        $input = $input['computed'];
 
-        if (!(array_key_exists('Width', $input) && array_key_exists('Height', $input))) {
+        if (!(array_key_exists('width', $input) && array_key_exists('height', $input))) {
             return;
         }
 
         $dimensions = new Dimensions(
-            Width::pixels((int) $input['Width']),
-            Height::pixels((int) $input['Height'])
+            Width::pixels((int) $input['width']),
+            Height::pixels((int) $input['height'])
         );
 
         $output = $output->withDimensions($dimensions);

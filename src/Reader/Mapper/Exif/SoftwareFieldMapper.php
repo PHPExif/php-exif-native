@@ -43,11 +43,11 @@ class SoftwareFieldMapper implements FieldMapper
     {
         $this->guardInvalidArguments($field, $input, $output);
 
-        if (!array_key_exists('Software', $input)) {
+        if (!array_key_exists('software', $input)) {
             return;
         }
 
-        $software = new Software($input['Software']);
+        $software = new Software($input['software']);
 
         $output = $output->withSoftware($software);
     }

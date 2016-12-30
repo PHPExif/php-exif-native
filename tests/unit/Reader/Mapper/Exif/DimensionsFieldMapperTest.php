@@ -40,9 +40,9 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'COMPUTED' => [
-            'Height' => 1024,
-            'Width' => 2048,
+        'computed' => [
+            'height' => 1024,
+            'width' => 2048,
         ],
     ];
 
@@ -82,7 +82,7 @@ class DimensionsFieldMapperTest extends BaseFieldMapperTest
         $output = new Exif;
         $mapper = new $this->fieldMapperClass();
 
-        $mapper->mapField($field, ['COMPUTED' => ['foo' => 'bar',]], $output);
+        $mapper->mapField($field, ['computed' => ['foo' => 'bar',]], $output);
         $dimensions = $output->getDimensions();
 
         $this->assertNull($dimensions);

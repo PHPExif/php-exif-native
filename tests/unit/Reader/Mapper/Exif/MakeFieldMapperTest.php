@@ -38,7 +38,7 @@ class MakeFieldMapperTest extends BaseFieldMapperTest
      * @var array
      */
     protected $validInput = [
-        'Make' => 'Canon',
+        'make' => 'Canon',
     ];
 
     /**
@@ -65,7 +65,7 @@ class MakeFieldMapperTest extends BaseFieldMapperTest
         );
 
         $this->assertEquals(
-            $this->validInput['Make'],
+            $this->validInput['make'],
             (string) $newData
         );
     }
