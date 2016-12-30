@@ -25,20 +25,6 @@ use PHPExif\Common\Mapper\GuardInvalidArgumentsForExifTrait;
  */
 class ResolutionFieldMapper implements FieldMapper
 {
-    /**
-     * @var array
-     */
-    protected $map = [
-        HorizontalResolution::class => [
-            'dataField' => 'xresolution',
-            'method' => 'withHorizontalResolution',
-        ],
-        VerticalResolution::class => [
-            'dataField' => 'yresolution',
-            'method' => 'withVerticalResolution',
-        ],
-    ];
-
     use GuardInvalidArgumentsForExifTrait;
 
     /**
